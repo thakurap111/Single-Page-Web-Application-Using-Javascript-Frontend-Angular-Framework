@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
+import{ ProcessHTTPMsgService } from './services/process-httpmsg.service';
 
 import { AppComponent } from './app.component';
 import 'hammerjs';
@@ -31,6 +32,13 @@ import { LeaderService } from './services/leader.service';
 import { LoginComponent } from './login/login.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSliderModule } from '@angular/material/slider';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { baseURL } from './shared/baseurl';
+import { HighlightDirective } from './directives/highlight.directive';
+
+
 
 @NgModule({
   declarations: [
@@ -42,7 +50,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
@@ -51,6 +60,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     FlexLayoutModule,
     AppRoutingModule,
     MatListModule,
+    HttpClientModule,
+    HttpModule,
     MatFormFieldModule, 
     MatInputModule,
     MatCheckboxModule,
@@ -60,6 +71,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatCardModule,
     MatButtonModule,
     MatDialogModule,
+    MatSliderModule,
     FormsModule ,
     ReactiveFormsModule,
     MatProgressSpinnerModule
@@ -67,7 +79,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   providers: [
     DishService,
     PromotionService,
-    LeaderService
+    LeaderService,
+    ProcessHTTPMsgService,
+    {provide: 'BaseURL', useValue: baseURL}
   ],
   entryComponents: [
     LoginComponent
